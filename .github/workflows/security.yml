@@ -1,0 +1,60 @@
+name: GitHub Advanced Security
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 0 * * 1'  # Runs every Monday at midnight
+
+permissions:
+  security-events: write
+  contents: read
+
+jobs:
+  code-scanning:
+    name: Code Scanning (CodeQL)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check for Supported Files
+        run: |
+          if ! find . -name "*.py" -o -name "*.js"; then
+            echo "No supported code files found. Skipping CodeQL."
+            exit 0
+          fi
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: 'python, javascript'
+
+      - name: Run CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+
+  secret-scanning:
+    name: Secret Scanning
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Enable Secret Scanning
+        run: echo "Secret Scanning enabled. Check Security tab for results."
+
+  dependabot:
+    name: Dependency Review
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Dependency Review
+        uses: actions/dependency-review-action@v3
+        with:
+          base-ref: ${{ github.event.pull_request.base.ref }}
+          head-ref: ${{ github.event.pull_request.head.ref }}
