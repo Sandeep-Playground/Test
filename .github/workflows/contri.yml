@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run User Contribution Activity Report
-        uses: Sandeep-Playground/contri@v2
+        uses: Sandeep-Playground/contri@v3
         with:
           github_token: ${{ secrets.ORG_AUDIT_TOKEN }}
           org_names: yubi-migration
@@ -21,3 +21,4 @@ jobs:
         with:
           name: users-last-activity-report
           path: "*.csv"
+      
