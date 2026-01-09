@@ -13,7 +13,7 @@ jobs:
         uses: Sandeep-Playground/Dormant-developer-users@v1.0.1
         with:
           github_token: ${{ secrets.ORG_AUDIT_TOKEN }}
-          org_names: yubi-migration
+          org_names: Sandeep-UD
           days_inactive_threshold: 90
 
       - name: Upload dormant users report
