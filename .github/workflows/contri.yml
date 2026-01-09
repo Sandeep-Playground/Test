@@ -13,7 +13,7 @@ jobs:
         uses: Sandeep-Playground/contri@v3
         with:
           github_token: ${{ secrets.ORG_AUDIT_TOKEN }}
-          org_names: yubi-migration
+          org_names: yubi-migration-test
           days_inactive_threshold: 90
 
       - name: Upload activity report
