@@ -1,0 +1,22 @@
+name: User Contribution Activity Audit
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 2 1 * *"
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+      - name: Run User Contribution Activity Report
+        uses: Sandeep-Playground/contri@v2
+        with:
+          github_token: ${{ secrets.ORG_AUDIT_TOKEN }}
+          org_names: yubi-migration
+          days_inactive_threshold: 90
+
+      - name: Upload activity report
+        uses: actions/upload-artifact@v4
+        with:
+          name: users-last-activity-report
+          path: "*.csv"
