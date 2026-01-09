@@ -4,7 +4,7 @@
   uses: Sandeep-Playground/Dormant-developer-users@v1.0.0
   with:
     # GitHub token with read:org and repo permissions
-    github_token: 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
+    github_token: 
     # Comma-separated organization names
     org_names: yubi-migration
     # Days to consider a user inactive
