@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run Dormant Developer Users Report
-        uses: Sandeep-Playground/Dormant-developer-users@v1.0.1
+        uses: Sandeep-Playground/Dormant-developer-users@v1.0.8
         with:
           github_token: ${{ secrets.ORG_AUDIT_TOKEN }}
-          org_names: Sandeep-UD
+          org_names: yubi-migration
           days_inactive_threshold: 90
 
       - name: Upload dormant users report
