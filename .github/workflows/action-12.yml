@@ -1,0 +1,13 @@
+            - name: GitHub Dormant Users Report
+  # You may pin to the exact commit or the version.
+  # uses: Sandeep-Playground/Dormant-developer-users@11e39adb8a6675bdfbc4c9d1da7d1df728ae9b39
+  uses: Sandeep-Playground/Dormant-developer-users@v1.0.0
+  with:
+    # GitHub token with read:org and repo permissions
+    github_token: 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
+    # Comma-separated organization names
+    org_names: yubi-migration
+    # Days to consider a user inactive
+    days_inactive_threshold: 30
+    # optional, default is 60
+          
